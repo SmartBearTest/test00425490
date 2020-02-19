@@ -111,7 +111,7 @@ NOTE: Check the TestCase transaction log after the execution of the test to view
           <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
-          <con:entry environmentId="c6fe78f9-4073-49f0-a341-a9aca81d2e3d">
+          <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
         </con:environmentSpec>
@@ -173,8 +173,8 @@ NOTE: Check the TestCase transaction log after the execution of the test to view
           <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
-          <con:entry environmentId="c6fe78f9-4073-49f0-a341-a9aca81d2e3d">
-            <con:authProfile>No Authorization</con:authProfile>
+          <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
+            <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
         </con:environmentSpec>
       </con:restRequest>
@@ -213,4 +213,9 @@ NOTE: Check the TestCase transaction log after the execution of the test to view
     <con:status>NONE</con:status>
     <con:properties/>
   </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
 </con:testCase>

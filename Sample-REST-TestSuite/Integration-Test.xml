@@ -33,7 +33,16 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
         <con:endpoint>http://localhost:8084</con:endpoint>
         <con:request>{"sample" : "1 "}</con:request>
         <con:originalUri>http://localhost/login</con:originalUri>
-        <con:assertion type="JsonPath Existence Match" id="3e937dfa-57ab-441d-9527-84c33802b690" name="Check for existence of [sessionid]">
+        <con:assertion type="JsonPath Existence Match" name="Check for existence of [sessionid]" id="d08d4de9-7498-476e-9a0c-d3b130d94275">
+          <con:configuration>
+            <path>$['sessionid']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" name="Check for existence of [sessionid]1" id="935c1248-ebbf-4c5a-83ff-1571a504c69c">
           <con:configuration>
             <path>$['sessionid']</path>
             <content>true</content>
@@ -84,7 +93,7 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
-          <con:entry environmentId="c6fe78f9-4073-49f0-a341-a9aca81d2e3d">
+          <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
         </con:environmentSpec>
@@ -148,8 +157,8 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
-          <con:entry environmentId="c6fe78f9-4073-49f0-a341-a9aca81d2e3d">
-            <con:authProfile>No Authorization</con:authProfile>
+          <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
+            <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
         </con:environmentSpec>
       </con:restRequest>
@@ -212,8 +221,8 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
-          <con:entry environmentId="c6fe78f9-4073-49f0-a341-a9aca81d2e3d">
-            <con:authProfile>No Authorization</con:authProfile>
+          <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
+            <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
         </con:environmentSpec>
       </con:restRequest>
@@ -277,8 +286,8 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
-          <con:entry environmentId="c6fe78f9-4073-49f0-a341-a9aca81d2e3d">
-            <con:authProfile>No Authorization</con:authProfile>
+          <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
+            <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
         </con:environmentSpec>
       </con:restRequest>
@@ -292,15 +301,15 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
       <action>stop</action>
     </con:config>
   </con:testStep>
-  <con:testStep type="assertionteststep" name="Copy of Assertion" id="196192e2-3ac2-4946-bbf7-891f595220cb">
+  <con:testStep type="assertionteststep" name="Copy of Assertion" id="19d90e3c-c538-464b-a8f9-6ccbb8702cf8">
     <con:settings/>
     <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:entry>
-        <con:id>6463eb62-c61e-4d04-8031-a92372db44e2</con:id>
+        <con:id>57a68c32-c55d-4cd1-acef-0c8bf320e18d</con:id>
         <con:isGroup>false</con:isGroup>
         <con:sourceId>d669030a-5e8c-4cf7-badd-9e8ae282be4b</con:sourceId>
         <con:propertyName>Response</con:propertyName>
-        <con:assertion type="Simple Contains" name="Contains" id="050a1b34-fb12-4246-8ca4-ab157fb83907">
+        <con:assertion type="Simple Contains" name="Contains" id="5d81a371-99cf-4fb3-b5c1-1317c3e517fd">
           <con:configuration>
             <token>sessionid</token>
             <ignoreCase>false</ignoreCase>
@@ -317,4 +326,9 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
     <con:status>NONE</con:status>
     <con:properties/>
   </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
 </con:testCase>

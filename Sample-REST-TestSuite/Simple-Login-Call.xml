@@ -37,6 +37,15 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
             <codes>200</codes>
           </con:configuration>
         </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="fd3bdab6-5507-4cd9-a1e3-8a22672513d3" name="Check for existence of [sessionid]">
+          <con:configuration>
+            <path>$['sessionid']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
         <con:credentials>
           <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
           <con:authType>No Authorization</con:authType>
@@ -79,22 +88,22 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           <con:entry environmentId="c7173b3a-fee4-45c8-906c-55deaef4eb0d">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
-          <con:entry environmentId="c6fe78f9-4073-49f0-a341-a9aca81d2e3d">
+          <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
         </con:environmentSpec>
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="assertionteststep" name="Assertion" id="390c4fc9-bc46-409f-bbc6-4380e339ffa8">
+  <con:testStep type="assertionteststep" name="Assertion" id="f6a5c662-6dcb-462a-92b0-5041d29ed97e">
     <con:settings/>
     <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:entry>
-        <con:id>089a4f3c-24cf-44e0-b318-6e9b60970bbc</con:id>
+        <con:id>99962351-0b6b-4847-bc13-940f461862c5</con:id>
         <con:isGroup>false</con:isGroup>
         <con:sourceId>8c4c6e50-238e-4476-80dc-15d7b89fff4f</con:sourceId>
         <con:propertyName>Response</con:propertyName>
-        <con:assertion type="Simple Contains" name="Contains" id="692a897a-d7c9-425b-8545-60b735b4d809">
+        <con:assertion type="Simple Contains" name="Contains" id="395ae3c6-9242-4550-b7b4-091730793151">
           <con:configuration>
             <token>sessionid</token>
             <ignoreCase>false</ignoreCase>
@@ -120,8 +129,13 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
     <con:properties/>
   </con:breakPoints>
   <con:breakPoints>
-    <con:testStepId>390c4fc9-bc46-409f-bbc6-4380e339ffa8</con:testStepId>
+    <con:testStepId>f6a5c662-6dcb-462a-92b0-5041d29ed97e</con:testStepId>
     <con:status>NONE</con:status>
     <con:properties/>
   </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
 </con:testCase>
