@@ -15,5 +15,5 @@
       <con:endless>true</con:endless>
     </con:virtError>
   </con:constraints>
-  <con:headerValidator/>
+  <con:headerValidator type="NONE"/>
 </con:restMockService>

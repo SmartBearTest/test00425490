@@ -4,7 +4,28 @@
   <con:settings>
     <con:setting id="944b0ac9-17f6-4d95-afb0-491f31682c42fileName">Test-account-creation</con:setting>
   </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
   <con:runType>SEQUENTIAL</con:runType>
-  <con:properties/>
+  <con:properties>
+    <con:property>
+      <con:name>placeholder</con:name>
+      <con:value><![CDATA[<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Account registration</title>
+		<meta name="description" content="SoapUI Sample content">
+	</head>
+
+	<body>
+  		<h1>Welcome!</h1>
+  		<form action="accountcreation" method="post" name="account_registration_form">
+  			<input type="text" name="username" placeholder="John Doe" />
+			<input type="password" name="password" />
+			<input type="submit" name="password" />
+		</form>
+  	</body>
+</html>]]></con:value>
+    </con:property>
+  </con:properties>
   <con:reportParameters/>
 </con:testSuite>

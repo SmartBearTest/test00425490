@@ -3,7 +3,40 @@
   <con:settings>
     <con:setting id="dc3f939d-834c-4aa5-84ef-bcd94d6e276afileName">Account-creation</con:setting>
   </con:settings>
-  <con:definitionCache type="TEXT"/>
+  <con:definitionCache type="TEXT" rootPart="file:/C:/Program%20Files/SmartBear/ReadyAPI-2.7.0/bin/../tutorials/WSDL-WADL/WADL-service.wadl">
+    <con:part>
+      <con:url>file:/C:/Program%20Files/SmartBear/ReadyAPI-2.7.0/bin/../tutorials/WSDL-WADL/WADL-service.wadl</con:url>
+      <con:content><![CDATA[<application xmlns="http://research.sun.com/wadl/2006/10">
+  <doc/>
+  <resources base="http://localhost:8080/">
+    <resource path="accountcreation">
+      <method name="GET" id="viewAccountRegistration">
+        <doc xml:lang="en" title="Register a new account">The account register service can be used to fill in account registration forms.</doc>
+        <response>
+          <representation mediaType="text/html"/>
+        </response>
+      </method>
+      <method name="POST" id="createUserAccount">
+        <doc xml:lang="en" title="Register a new account">Creating the account after having filled in the registration form.</doc>
+        <request>
+          <param type="xs:string" style="query" name="username" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc>The username</doc>
+          </param>
+          <param type="xs:string" style="query" name="password" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc>The password</doc>
+          </param>
+          <representation mediaType="application/json"/>
+        </request>
+        <response>
+          <representation mediaType="text/html"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>]]></con:content>
+      <con:type>http://research.sun.com/wadl/2006/10</con:type>
+    </con:part>
+  </con:definitionCache>
   <con:endpoints>
     <con:endpoint>http://localhost:8096</con:endpoint>
   </con:endpoints>

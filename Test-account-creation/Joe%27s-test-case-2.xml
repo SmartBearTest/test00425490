@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Joe's test case 2" searchProperties="true" id="58362c90-83f4-4a9e-ab25-98d589dffe59" xmlns:con="http://eviware.com/soapui/config">
+  <con:description>TestCase generated for REST Resource [accountcreation] located at [/accountcreation]</con:description>
+  <con:settings>
+    <con:setting id="6807bf67-21a2-4add-ae79-29496a981563fileName">accountcreation-TestCase</con:setting>
+    <con:setting id="58362c90-83f4-4a9e-ab25-98d589dffe59fileName">Joe%27s-test-case-2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="delete the widget" id="f11a926f-503b-4a34-b7d4-501856fd3be2">
+    <con:settings/>
+    <con:config service="Account creation" resourcePath="/accountcreation" methodName="Register a new account - createUserAccount" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="delete the widget" mediaType="application/json" postQueryString="false" id="3b8459ba-1d9f-49c7-83fe-37a17040b0b7">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>http://localhost:8096</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/accountcreation</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="password" value="${#[Test account creation#Joe's test case 1#get the gadget Id]#Password}"/>
+          <con:entry key="File" value="${#[Test account creation#Joe's test case 1#get the gadget Id]#Username}"/>
+          <con:entry key="username" value=""/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>File</con:entry>
+          <con:entry>password</con:entry>
+          <con:entry>username</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>d6e19654-c7c2-41d5-8238-4b0ea65244c0</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>dcebee2d-1c9b-4197-92f3-b63da6557ae5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>
