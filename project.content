@@ -2,9 +2,14 @@ Ecommerce\Login.xml
 Ecommerce\buy.xml
 Ecommerce\logout.xml
 Ecommerce\search.xml
+SecurityTest-1.xml
+SecurityTest-2.xml
+SecurityTest-3.xml
+Copy-of-SecurityTest-1.xml
 Sample-REST-TestSuite\Simple-Login-Call.xml
 Sample-REST-TestSuite\Integration-Test.xml
 Sample-REST-TestSuite\DataDriven-REST-Test.xml
+TestSuite-test\Copy-of-Simple-Login-Call.xml
 Load-Test-1.xml
 EcommerceVirt\%2Ftest.xml
 EcommerceVirt\buy.xml

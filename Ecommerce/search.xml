@@ -40,7 +40,7 @@
     </con:representation>
     <con:request name="Request 1" id="21ae0292-5321-42ce-b85e-257fe3d8c656" mediaType="application/json">
       <con:settings>
-        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="test" value="x " xmlns="http://eviware.com/soapui/config"/></con:setting>
       </con:settings>
       <con:endpoint>http://localhost:8084</con:endpoint>
       <con:request/>
@@ -86,6 +86,9 @@
         </con:entry>
         <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
           <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="ab12d4aa-dd7d-43cb-bc42-44a380961f42">
+          <con:authProfile>No Authorization</con:authProfile>
         </con:entry>
       </con:environmentSpec>
     </con:request>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="333b3b92-bc99-4628-afcb-90672b2992ea" created="2.7.0" activeEnvironment="Default environment" name="REST Sample Project" resourceRoot="" updated="3.1.0" encryptionMode="Not encrypted" compositeProjectFormat="1.3" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="333b3b92-bc99-4628-afcb-90672b2992ea" created="2.7.0" activeEnvironment="test" name="REST Sample Project" resourceRoot="" updated="3.1.0" encryptionMode="Not encrypted" compositeProjectFormat="1.3" xmlns:con="http://eviware.com/soapui/config">
   <con:description>Sample Projects bases on a virtualized REST service. Please make sure that port 8084 is available on your local machine or you can update the virtual API under the serviceV tool to reflect an open port on your system. You will also have to update the ports on the tests to reflect
 the same ports on the virtual service.</con:description>
   <con:settings>
@@ -81,13 +81,16 @@ the same ports on the virtual service.</con:description>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
   <con:requirements/>
-  <con:properties/>
+  <con:properties>
+    <con:property>
+      <con:name>Model</con:name>
+    </con:property>
+  </con:properties>
   <con:wssContainer/>
   <con:databaseConnectionContainer/>
   <con:jmsConnectionContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>
-  <con:reporting/>
   <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
     <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
 // This code is often used for adding custom authentication to SoapUI Pro tests
@@ -121,6 +124,21 @@ the same ports on the virtual service.</con:description>
     <con:service type="REST" name="Ecommerce">
       <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">http://localhost:8085</con:endpoint>
     </con:service>
+    <con:property>
+      <con:name>Model</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:environment id="ab12d4aa-dd7d-43cb-bc42-44a380961f42" name="prod">
+    <con:service type="REST" name="Ecommerce">
+      <con:endpoint authProfile="No Authorization" username="" password="" domain="" incomingWss="" outgoingWss="" wssTimeToLive="" wssType="">http://localhost:8084</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>Model</con:name>
+      <con:value>123</con:value>
+    </con:property>
     <con:databaseConnectionContainer/>
     <con:jmsConnectionContainer/>
   </con:environment>

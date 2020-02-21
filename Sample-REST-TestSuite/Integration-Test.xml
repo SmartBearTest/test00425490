@@ -96,6 +96,9 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
+          <con:entry environmentId="ab12d4aa-dd7d-43cb-bc42-44a380961f42">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
         </con:environmentSpec>
       </con:restRequest>
     </con:config>
@@ -159,6 +162,9 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           </con:entry>
           <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
             <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ab12d4aa-dd7d-43cb-bc42-44a380961f42">
+            <con:authProfile>No Authorization</con:authProfile>
           </con:entry>
         </con:environmentSpec>
       </con:restRequest>
@@ -224,6 +230,9 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
             <con:authProfile>Inherit From Parent</con:authProfile>
           </con:entry>
+          <con:entry environmentId="ab12d4aa-dd7d-43cb-bc42-44a380961f42">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
         </con:environmentSpec>
       </con:restRequest>
     </con:config>
@@ -288,6 +297,9 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
           </con:entry>
           <con:entry environmentId="e85739b4-b68c-4043-ac47-f302f3f177fe">
             <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="ab12d4aa-dd7d-43cb-bc42-44a380961f42">
+            <con:authProfile>No Authorization</con:authProfile>
           </con:entry>
         </con:environmentSpec>
       </con:restRequest>

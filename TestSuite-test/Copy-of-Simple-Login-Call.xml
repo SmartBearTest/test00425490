@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:testCase id="c3fbf613-f789-4fe0-a4e5-1757eba3ccc2" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Simple Login Call" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+<con:testCase id="dfd09be4-d9b4-4e94-bccb-2667e06bb97c" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Copy of Simple Login Call" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
   <con:description>Simple test can be used to show how easy it is to call a simple REST Service. You can have one or multiple REST endpoints that are not related to each other. This is commonly used when running integration tests.
 
 Steps:
@@ -10,10 +10,10 @@ Third Step turns off the virtual REST Service
 
 NOTE: If you would like to run the Login step without as a standalone step please turn on the virtual service under the ServiceV Tool</con:description>
   <con:settings>
-    <con:setting id="c3fbf613-f789-4fe0-a4e5-1757eba3ccc2fileName">Simple-Login-Call</con:setting>
+    <con:setting id="dfd09be4-d9b4-4e94-bccb-2667e06bb97cfileName">Copy-of-Simple-Login-Call</con:setting>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
-  <con:testStep type="VirtRunnerTestStep" name="StartService" id="49e7dd6f-1ad0-4104-8d0a-2bc166ee29e4">
+  <con:testStep type="VirtRunnerTestStep" name="StartService" id="f14f0b83-2f38-48ab-88ff-1e3badfa71f3">
     <con:settings/>
     <con:config>
       <url>localhost</url>
@@ -21,7 +21,7 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
       <action>run</action>
     </con:config>
   </con:testStep>
-  <con:testStep type="restrequest" name="Login" id="8c4c6e50-238e-4476-80dc-15d7b89fff4f">
+  <con:testStep type="restrequest" name="Login" id="3316069f-baaa-4e54-85a6-25df7b0cd659">
     <con:settings/>
     <con:config service="Ecommerce" resourcePath="/login/" methodName="Login" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:restRequest name="Login" id="af9f46ad-d5ad-4c3c-bcde-e2f266c3dc2c" mediaType="application/json" postQueryString="false">
@@ -101,15 +101,15 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="assertionteststep" name="Assertion" id="f6a5c662-6dcb-462a-92b0-5041d29ed97e">
+  <con:testStep type="assertionteststep" name="Assertion" id="a0bc6d19-2553-4cb9-ac0c-03b1e143320c">
     <con:settings/>
     <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:entry>
-        <con:id>99962351-0b6b-4847-bc13-940f461862c5</con:id>
+        <con:id>57a8d5bf-f457-413b-a9ef-f354c171dc54</con:id>
         <con:isGroup>false</con:isGroup>
-        <con:sourceId>8c4c6e50-238e-4476-80dc-15d7b89fff4f</con:sourceId>
+        <con:sourceId>3316069f-baaa-4e54-85a6-25df7b0cd659</con:sourceId>
         <con:propertyName>Response</con:propertyName>
-        <con:assertion type="Simple Contains" name="Contains" id="395ae3c6-9242-4550-b7b4-091730793151">
+        <con:assertion type="Simple Contains" name="Contains" id="9819a1d8-4e01-42d7-8dd1-deea64b2a569">
           <con:configuration>
             <token>sessionid</token>
             <ignoreCase>false</ignoreCase>
@@ -119,7 +119,7 @@ NOTE: If you would like to run the Login step without as a standalone step pleas
       </con:entry>
     </con:config>
   </con:testStep>
-  <con:testStep type="VirtRunnerTestStep" name="StopService" id="e7ca5e17-6eda-4ec7-9628-3cc48017145d">
+  <con:testStep type="VirtRunnerTestStep" name="StopService" id="0981323b-2cbb-46e5-aa8a-a7f3fb9817df">
     <con:settings/>
     <con:config>
       <url>localhost</url>

